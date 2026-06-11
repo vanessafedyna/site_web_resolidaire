@@ -1,0 +1,6 @@
+/assets/uploads/*
+!/assets/uploads/.htaccess
+/vendor/
+/.env
+/Thumbs.db
+/.DS_Store
