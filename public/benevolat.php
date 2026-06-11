@@ -58,35 +58,33 @@ $volunteerBenefits = [
 ];
 $humanPhoto = [
     'path' => 'images/benevolat/benevoles-groupe.jpg',
-    'title' => 'Benevoles engages lors d un echange au coeur de la vie de quartier.',
+    'title' => 'Benevoles de Resolidaire en contexte communautaire',
 ];
 $humanPhotoFile = ASSETS_PATH . '/' . ltrim($humanPhoto['path'], '/');
 ?>
 <main id="main-content">
     <section class="page-hero benevolat-hero">
         <div class="container">
-            <div class="panel">
-                <span class="eyebrow">Benevolat</span>
-                <h1>Donner du temps, creer des liens, faire une vraie difference.</h1>
-                <p>Les benevoles jouent un role essentiel dans l accueil, les activites, les services et la vie de quartier.</p>
-                <a class="button" href="#devenir-benevole">Je veux devenir benevole</a>
-            </div>
-        </div>
-    </section>
-
-    <section class="benevolat-human-photo">
-        <div class="container">
-            <div class="benevolat-human-photo-card">
-                <?php if (is_file($humanPhotoFile)): ?>
-                    <img src="<?= e(asset_url($humanPhoto['path'])); ?>" alt="<?= e($humanPhoto['title']); ?>">
-                <?php else: ?>
-                    <div class="benevolat-gallery-placeholder" role="img" aria-label="<?= e($humanPhoto['title']); ?>">
-                        <span>Photo a ajouter</span>
-                        <small><?= e('assets/' . ltrim($humanPhoto['path'], '/')); ?></small>
+            <div class="panel benevolat-hero-panel">
+                <div class="benevolat-hero-grid">
+                    <div class="benevolat-hero-copy">
+                        <span class="eyebrow">Benevolat</span>
+                        <h1>Donner du temps, creer des liens, faire une vraie difference.</h1>
+                        <p>Les benevoles jouent un role essentiel dans l accueil, les activites, les services et la vie de quartier.</p>
+                        <a class="button" href="#devenir-benevole">Je veux devenir benevole</a>
                     </div>
-                <?php endif; ?>
+                    <div class="benevolat-hero-media">
+                        <?php if (is_file($humanPhotoFile)): ?>
+                            <img src="<?= e(asset_url($humanPhoto['path'])); ?>" alt="<?= e($humanPhoto['title']); ?>">
+                        <?php else: ?>
+                            <div class="benevolat-gallery-placeholder" role="img" aria-label="<?= e($humanPhoto['title']); ?>">
+                                <span>Photo a ajouter</span>
+                                <small><?= e('assets/' . ltrim($humanPhoto['path'], '/')); ?></small>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
-            <p class="benevolat-human-photo-caption">Des benevoles engages au coeur de la vie de quartier.</p>
         </div>
     </section>
 
