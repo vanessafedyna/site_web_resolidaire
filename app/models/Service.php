@@ -33,6 +33,16 @@ class Service
         return $item ?: null;
     }
 
+    public static function create(array $data): bool
+    {
+        $stmt = db()->prepare('
+            INSERT INTO services (title, slug, short_description, full_description, eligibility, price_info, contact_info, image, display_order, is_active)
+            VALUES (:title, :slug, :short_description, :full_description, :eligibility, :price_info, :contact_info, :image, :display_order, :is_active)
+        ');
+
+        return $stmt->execute($data);
+    }
+
     public static function update(int $id, array $data): bool
     {
         $data['id'] = $id;
@@ -45,6 +55,12 @@ class Service
         ');
 
         return $stmt->execute($data);
+    }
+
+    public static function delete(int $id): bool
+    {
+        $stmt = db()->prepare('DELETE FROM services WHERE id = :id');
+        return $stmt->execute(['id' => $id]);
     }
 
     public static function countActive(): int

@@ -5,7 +5,7 @@ $items = Service::all();
 ?>
 <?php require_once __DIR__ . '/../../includes/admin-sidebar.php'; ?>
 <main class="admin-main">
-    <div class="admin-topbar"><h1>Services</h1></div>
+    <div class="admin-topbar"><h1>Services</h1><a class="button" href="<?= e(admin_url('services/create.php')); ?>">Ajouter</a></div>
     <?php if ($adminFlash): ?><div class="flash-banner flash flash-<?= e($adminFlash['type']); ?>"><?= e($adminFlash['message']); ?></div><?php endif; ?>
     <section class="table-card">
         <table>
@@ -17,7 +17,13 @@ $items = Service::all();
                     <td><?= e($item['slug']); ?></td>
                     <td><?= (int) $item['display_order']; ?></td>
                     <td><span class="status-pill <?= $item['is_active'] ? 'status-active' : 'status-inactive'; ?>"><?= $item['is_active'] ? 'Actif' : 'Inactif'; ?></span></td>
-                    <td><a class="button button-secondary" href="<?= e(admin_url('services/edit.php?id=' . $item['id'])); ?>">Modifier</a></td>
+                    <td class="actions">
+                        <a class="button button-secondary" href="<?= e(admin_url('services/edit.php?id=' . $item['id'])); ?>">Modifier</a>
+                        <form class="inline-form" method="post" action="<?= e(admin_url('services/delete.php?id=' . $item['id'])); ?>" data-confirm="Supprimer ce service ?">
+                            <?= csrf_field(); ?>
+                            <button class="button-danger" type="submit">Supprimer</button>
+                        </form>
+                    </td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

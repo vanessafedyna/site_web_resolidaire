@@ -3,6 +3,14 @@ $page_title = 'Services';
 $page_css = 'css/services.css';
 require_once __DIR__ . '/../includes/header.php';
 require_once __DIR__ . '/../includes/nav.php';
+
+$services = Service::all(true);
+$servicePlaceholders = [
+    'transport-medical' => 'assets/images/services/transport-medical.jpg',
+    'epicerie' => 'assets/images/services/transport-epicerie.jpg',
+    'intervention' => 'assets/images/services/intervention-milieu.jpg',
+];
+$serviceRequestHref = !empty($services[0]['slug']) ? '#' . $services[0]['slug'] : public_url('contact.php');
 ?>
 <main id="main-content">
     <section class="page-hero">
@@ -23,117 +31,76 @@ require_once __DIR__ . '/../includes/nav.php';
 
     <section class="services-overview">
         <div class="container">
-            <div class="services-cards-grid">
-                <article class="service-card">
-                    <a class="service-card-link" href="#popote">
-                        <h2>Popote roulante</h2>
-                        <p>Livraison de repas chauds a domicile pour soutenir l'autonomie et le maintien a domicile.</p>
-                        <span class="button button-secondary">En savoir plus</span>
-                    </a>
-                </article>
-                <article class="service-card">
-                    <a class="service-card-link" href="#transport-medical">
-                        <h2>Accompagnement et transport medical</h2>
-                        <p>Accompagnement benevole vers les rendez-vous medicaux, selon les disponibilites.</p>
-                        <span class="button button-secondary">En savoir plus</span>
-                    </a>
-                </article>
-                <article class="service-card">
-                    <a class="service-card-link" href="#epicerie">
-                        <h2>Transport vers l'epicerie</h2>
-                        <p>Transport organise vers certains points d'alimentation du quartier.</p>
-                        <span class="button button-secondary">En savoir plus</span>
-                    </a>
-                </article>
-                <article class="service-card">
-                    <a class="service-card-link" href="#intervention">
-                        <h2>Intervention de milieu</h2>
-                        <p>Ecoute, orientation, accompagnement et presence de proximite dans le quartier.</p>
-                        <span class="button button-secondary">En savoir plus</span>
-                    </a>
-                </article>
+            <?php if ($services): ?>
+                <div class="services-cards-grid">
+                    <?php foreach ($services as $service): ?>
+                        <article class="service-card">
+                            <a class="service-card-link" href="#<?= e($service['slug']); ?>">
+                                <h2><?= e($service['title']); ?></h2>
+                                <p><?= e($service['short_description']); ?></p>
+                                <span class="button button-secondary">En savoir plus</span>
+                            </a>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+            <?php else: ?>
+                <div class="panel services-panel">
+                    <p>Aucun service n'est disponible pour le moment.</p>
+                </div>
+            <?php endif; ?>
+        </div>
+    </section>
+
+    <?php if ($services): ?>
+        <section class="services-detail-list">
+            <div class="container services-detail-stack">
+                <?php foreach ($services as $index => $service): ?>
+                    <?php
+                    $detailClasses = 'service-detail';
+                    if ($index % 2 === 1) {
+                        $detailClasses .= ' service-detail-reverse';
+                    }
+
+                    $detailItems = array_filter([
+                        'Admissibilite' => $service['eligibility'] ?? '',
+                        'Cout' => $service['price_info'] ?? '',
+                        'Contact' => $service['contact_info'] ?? '',
+                    ]);
+
+                    $buttonLabel = ($service['slug'] ?? '') === 'intervention' ? 'Nous contacter' : 'Demander ce service';
+                    $placeholderPath = $servicePlaceholders[$service['slug']] ?? '';
+                    ?>
+                    <article class="<?= e($detailClasses); ?>" id="<?= e($service['slug']); ?>">
+                        <?php if (!empty($service['image'])): ?>
+                            <div class="service-detail-media">
+                                <img src="<?= e(upload_url($service['image'])); ?>" alt="Photo du service <?= e($service['title']); ?>.">
+                            </div>
+                        <?php else: ?>
+                            <div class="service-detail-media service-detail-placeholder" aria-hidden="true">
+                                <span>Photo a ajouter</span>
+                                <?php if ($placeholderPath): ?>
+                                    <small>Chemin prevu : <?= e($placeholderPath); ?></small>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
+                        <div class="service-detail-copy">
+                            <span class="eyebrow">Service <?= $index + 1; ?></span>
+                            <h2><?= e($service['title']); ?></h2>
+                            <p><?= e($service['full_description']); ?></p>
+                            <?php if ($detailItems): ?>
+                                <ul class="list-check">
+                                    <?php foreach ($detailItems as $label => $value): ?>
+                                        <li><strong><?= e($label); ?> :</strong> <?= e($value); ?></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            <?php endif; ?>
+                            <a class="button" href="<?= e(public_url('contact.php')); ?>"><?= e($buttonLabel); ?></a>
+                        </div>
+                    </article>
+                <?php endforeach; ?>
             </div>
-        </div>
-    </section>
-
-    <section class="services-detail-list">
-        <div class="container services-detail-stack">
-            <article class="service-detail" id="popote">
-                <div class="service-detail-media">
-                    <img src="<?= e(asset_url('images/services/popote-roulante.png')); ?>" alt="Benevole de Resolidaire devant une voiture de service pour la popote roulante.">
-                </div>
-                <div class="service-detail-copy">
-                    <span class="eyebrow">Service 1</span>
-                    <h2>Popote roulante</h2>
-                    <p>La popote roulante permet de recevoir des repas chauds a domicile. Ce service s'adresse aux personnes ainees ou en perte d'autonomie, de facon temporaire ou permanente.</p>
-                    <ul class="list-check">
-                        <li>Repas livres a domicile</li>
-                        <li>Soutien au maintien a domicile</li>
-                        <li>Service offert selon l'admissibilite</li>
-                        <li>Cout indicatif : 6 $ par repas, incluant soupe et dessert</li>
-                    </ul>
-                    <a class="button" href="<?= e(public_url('contact.php')); ?>">Demander ce service</a>
-                </div>
-            </article>
-
-            <article class="service-detail service-detail-reverse" id="transport-medical">
-                <div class="service-detail-media service-detail-placeholder" aria-hidden="true">
-                    <span>Photo a ajouter</span>
-                    <small>Chemin prevu : assets/images/services/transport-medical.jpg</small>
-                </div>
-                <div class="service-detail-copy">
-                    <span class="eyebrow">Service 2</span>
-                    <h2>Accompagnement et transport medical</h2>
-                    <p>Ce service aide les beneficiaires a se rendre a leurs rendez-vous medicaux grace a l'accompagnement de benevoles.</p>
-                    <ul class="list-check">
-                        <li>Transport vers un rendez-vous medical</li>
-                        <li>Presence rassurante d'un benevole</li>
-                        <li>Service offert selon les disponibilites</li>
-                        <li>Cout du trajet calcule selon la distance</li>
-                    </ul>
-                    <a class="button" href="<?= e(public_url('contact.php')); ?>">Demander ce service</a>
-                </div>
-            </article>
-
-            <article class="service-detail" id="epicerie">
-                <div class="service-detail-media service-detail-placeholder" aria-hidden="true">
-                    <span>Photo a ajouter</span>
-                    <small>Chemin prevu : assets/images/services/transport-epicerie.jpg</small>
-                </div>
-                <div class="service-detail-copy">
-                    <span class="eyebrow">Service 3</span>
-                    <h2>Transport vers l'epicerie</h2>
-                    <p>Ce service permet a des personnes accompagnees de se rendre a l'epicerie a certains moments determines.</p>
-                    <ul class="list-check">
-                        <li>Transport vers des points d'alimentation du quartier</li>
-                        <li>Service collectif</li>
-                        <li>Reservation requise</li>
-                        <li>Horaire selon les disponibilites</li>
-                    </ul>
-                    <a class="button" href="<?= e(public_url('contact.php')); ?>">Demander ce service</a>
-                </div>
-            </article>
-
-            <article class="service-detail service-detail-reverse" id="intervention">
-                <div class="service-detail-media service-detail-placeholder" aria-hidden="true">
-                    <span>Photo a ajouter</span>
-                    <small>Chemin prevu : assets/images/services/intervention-milieu.jpg</small>
-                </div>
-                <div class="service-detail-copy">
-                    <span class="eyebrow">Service 4</span>
-                    <h2>Intervention de milieu</h2>
-                    <p>L'intervention de milieu permet d'offrir une presence de proximite, de l'ecoute, de l'orientation et du soutien aux personnes du quartier.</p>
-                    <ul class="list-check">
-                        <li>Ecoute et accompagnement</li>
-                        <li>Orientation vers les bons services</li>
-                        <li>Soutien aux proches aidants</li>
-                        <li>Presence humaine dans le milieu de vie</li>
-                    </ul>
-                    <a class="button" href="<?= e(public_url('contact.php')); ?>">Nous contacter</a>
-                </div>
-            </article>
-        </div>
-    </section>
+        </section>
+    <?php endif; ?>
 
     <section class="services-steps">
         <div class="container">
@@ -142,22 +109,22 @@ require_once __DIR__ . '/../includes/nav.php';
             </div>
             <div class="services-steps-grid">
                 <article class="service-step">
-                    <span class="service-step-icon" aria-hidden="true">☎</span>
+                    <span class="service-step-icon" aria-hidden="true">&#9742;</span>
                     <span class="service-step-number">1</span>
                     <h3>Communiquer avec Resolidaire</h3>
                 </article>
                 <article class="service-step">
-                    <span class="service-step-icon" aria-hidden="true">✎</span>
+                    <span class="service-step-icon" aria-hidden="true">&#9998;</span>
                     <span class="service-step-number">2</span>
                     <h3>Expliquer votre besoin</h3>
                 </article>
                 <article class="service-step">
-                    <span class="service-step-icon" aria-hidden="true">✓</span>
+                    <span class="service-step-icon" aria-hidden="true">&#10003;</span>
                     <span class="service-step-number">3</span>
                     <h3>Verifier l'admissibilite</h3>
                 </article>
                 <article class="service-step">
-                    <span class="service-step-icon" aria-hidden="true">◎</span>
+                    <span class="service-step-icon" aria-hidden="true">&#9673;</span>
                     <span class="service-step-number">4</span>
                     <h3>Confirmer le service selon les disponibilites</h3>
                 </article>
@@ -181,7 +148,7 @@ require_once __DIR__ . '/../includes/nav.php';
                 <h2>Besoin d'aide ou des questions ?</h2>
                 <p>Notre equipe est disponible pour vous orienter vers le bon service.</p>
                 <div class="quick-links">
-                    <a class="button" href="#popote">Demander un service</a>
+                    <a class="button" href="<?= e($serviceRequestHref); ?>">Demander un service</a>
                     <a class="button button-secondary" href="<?= e(public_url('contact.php')); ?>">Nous contacter</a>
                 </div>
             </div>
