@@ -20,6 +20,7 @@ class Activity
         $stmt = db()->prepare('
             SELECT * FROM activities
             WHERE is_published = 1
+              AND activity_date >= CURDATE()
             ORDER BY activity_date ASC, start_time ASC
             LIMIT :activity_limit
         ');
