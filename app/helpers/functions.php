@@ -138,3 +138,31 @@ function format_datetime(?string $date, ?string $timeStart = null, ?string $time
 
     return implode(' ', $parts);
 }
+
+function official_contact_phone_display(): string
+{
+    return '514-598-9670';
+}
+
+function official_contact_phone_href(): string
+{
+    return '5145989670';
+}
+
+function official_contact_address(): string
+{
+    return '2502 Av. Desjardins';
+}
+
+function official_contact_hours_lines(): array
+{
+    return [
+        'Lundi au jeudi : 9h-17h',
+        'Vendredi : 9h-14h',
+    ];
+}
+
+function official_contact_hours_text(): string
+{
+    return implode(' / ', official_contact_hours_lines());
+}

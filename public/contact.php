@@ -29,14 +29,12 @@ if (($_SERVER['REQUEST_METHOD'] ?? 'GET') === 'POST') {
 
 require_once __DIR__ . '/../includes/nav.php';
 
-$contactPhoneDisplay = '514-598-9670';
-$contactPhoneHref = '5145989670';
+$contactPhoneDisplay = official_contact_phone_display();
+$contactPhoneHref = official_contact_phone_href();
 $contactEmail = 'info@resolidaire.org';
-$contactAddress = '2502 Av. Desjardins, Montreal';
-$contactHours = [
-    'Lundi au jeudi : 8 h 30 a 12 h 30 et 13 h a 16 h 30',
-    'Vendredi : 8 h 30 a 13 h 30',
-];
+$contactAddress = official_contact_address();
+$contactHours = official_contact_hours_lines();
+$contactMapsHref = 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode($contactAddress);
 $contactNeeds = [
     [
         'title' => 'Demander un service',
@@ -139,8 +137,8 @@ $contactNeeds = [
         <div class="container">
             <div class="contact-card contact-location-card">
                 <h2>Nous trouver</h2>
-                <p>Resolidaire est situe au 2502 Av. Desjardins, Montreal.</p>
-                <a class="button button-secondary" href="https://www.google.com/maps/search/?api=1&query=2502%20Ave.%20Desjardins%2C%20Montreal" target="_blank" rel="noopener">Voir l itineraire</a>
+                <p>Resolidaire est situe au <?= e($contactAddress); ?>.</p>
+                <a class="button button-secondary" href="<?= e($contactMapsHref); ?>" target="_blank" rel="noopener">Voir l itineraire</a>
             </div>
         </div>
     </section>

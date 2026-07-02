@@ -39,7 +39,7 @@ $donMethods = [
     [
         'title' => 'Donner directement aux bureaux',
         'text' => 'Vous pouvez aussi contribuer directement aux bureaux de Resolidaire.',
-        'address' => '2502 Ave. Desjardins, Montreal',
+        'address' => official_contact_address(),
     ],
     [
         'title' => 'Nous contacter',

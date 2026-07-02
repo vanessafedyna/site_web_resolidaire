@@ -23,10 +23,10 @@ INSERT INTO donation_calls (title, description, button_text, button_url, image, 
 ('Soutenir la programmation estivale', 'Aidez-nous a maintenir des activites accessibles, rassembleuses et chaleureuses pour les aines du quartier.', 'Faire un don', 'https://example.com/don', NULL, 1);
 
 INSERT INTO site_settings (setting_key, setting_value) VALUES
-('phone', '514-555-2030'),
+('phone', '514-598-9670'),
 ('email', 'info@resolidaire.org'),
-('address', '1234, rue du Quartier, Montreal, QC'),
-('opening_hours', 'Lundi au vendredi, 9 h a 16 h'),
+('address', '2502 Av. Desjardins'),
+('opening_hours', 'Lundi au jeudi : 9h-17h / Vendredi : 9h-14h'),
 ('facebook_url', 'https://facebook.com'),
 ('donation_url', 'https://example.com/don'),
 ('footer_intro', 'Resolidaire cree des liens de confiance, soutient l entraide et facilite l acces a des ressources humaines et accessibles.');

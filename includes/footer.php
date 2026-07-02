@@ -13,6 +13,27 @@ $footerIntro = html_entity_decode(
     ENT_QUOTES | ENT_HTML5,
     'UTF-8'
 );
+
+$footerPhone = trim((string) ($siteSettings['phone'] ?? ''));
+if ($footerPhone === '' || preg_match('/^514-(?:555|000)-\d{4}$/', $footerPhone)) {
+    $footerPhone = official_contact_phone_display();
+}
+
+$footerAddress = trim((string) ($siteSettings['address'] ?? ''));
+if (
+    $footerAddress === ''
+    || preg_match('/^1234(?:,\s*|\s+)rue\b/i', $footerAddress)
+) {
+    $footerAddress = official_contact_address();
+}
+
+$footerHours = trim((string) ($siteSettings['opening_hours'] ?? ''));
+if (
+    $footerHours === ''
+    || preg_match('/^Lundi au vendredi,\s*9\s*h\s*[aà]\s*16\s*h$/u', $footerHours)
+) {
+    $footerHours = official_contact_hours_text();
+}
 ?>
 <?php if ($flash): ?>
     <div class="flash flash-<?= e($flash['type']); ?>"><?= e($flash['message']); ?></div>
@@ -23,10 +44,10 @@ $footerIntro = html_entity_decode(
             <h2>Coordonnees</h2>
             <p><?= nl2br(e($footerIntro)); ?></p>
             <ul class="contact-list">
-                <li><strong>Telephone :</strong> <?= e($siteSettings['phone'] ?? '514-000-0000'); ?></li>
+                <li><strong>Telephone :</strong> <?= e($footerPhone); ?></li>
                 <li><strong>Courriel :</strong> <a href="mailto:<?= e($siteSettings['email'] ?? 'info@resolidaire.org'); ?>"><?= e($siteSettings['email'] ?? 'info@resolidaire.org'); ?></a></li>
-                <li><strong>Adresse :</strong> <?= e($siteSettings['address'] ?? 'Montreal, QC'); ?></li>
-                <li><strong>Heures :</strong> <?= e($siteSettings['opening_hours'] ?? 'Lundi au vendredi, 9 h a 16 h'); ?></li>
+                <li><strong>Adresse :</strong> <?= e($footerAddress); ?></li>
+                <li><strong>Heures :</strong> <?= e($footerHours); ?></li>
             </ul>
         </section>
 
