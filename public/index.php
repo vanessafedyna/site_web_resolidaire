@@ -14,15 +14,19 @@ require_once __DIR__ . '/../includes/nav.php';
     <section class="hero">
         <div class="container hero-grid">
             <div class="hero-copy">
-                <span class="eyebrow">Pour les aines, proches aidants et voisins solidaires</span>
-                <h1>Un point d'ancrage humain pour mieux vivre le quartier.</h1>
-                <p>Resolidaire rassemble des services de proximite, des activites et un accompagnement attentif pour soutenir la vie communautaire avec douceur, clarte et respect.</p>
-                <div class="quick-links">
-                    <a class="button" href="<?= e(public_url('services.php')); ?>">Demander un service</a>
-                    <a class="button button-secondary" href="<?= e(public_url('benevolat.php')); ?>">Devenir benevole</a>
-                    <a class="button button-secondary" href="<?= e(public_url('contact.php')); ?>">Nous contacter</a>
-                    <a class="button button-secondary" href="<?= e(public_url('don.php')); ?>">Faire un don</a>
+                <span class="eyebrow">Pour les aîné·e·s, les proches aidants et les familles du quartier</span>
+                <h1>Du soutien concret pour mieux vivre dans le quartier.</h1>
+                <p>Résolidaire accompagne les personnes du milieu avec des services de proximité, des activités accessibles et une présence humaine enracinée dans Hochelaga-Maisonneuve.</p>
+                <div class="hero-actions">
+                    <a class="button" href="<?= e(public_url('contact.php')); ?>">Obtenir de l’aide</a>
+                    <a class="button button-secondary" href="<?= e(public_url('activites.php')); ?>">Voir les activités</a>
                 </div>
+                <a class="hero-secondary-link" href="<?= e(public_url('benevolat.php')); ?>">Devenir bénévole</a>
+                <ul class="hero-reassurance" aria-label="Points clés">
+                    <li>Services de proximité</li>
+                    <li>Activités accessibles</li>
+                    <li>Accompagnement humain</li>
+                </ul>
             </div>
             <div class="hero-card hero-media">
                 <img src="<?= e(asset_url('images/hero/home-hero-photo.png')); ?>" alt="Membre de l'equipe Resolidaire en echange avec des aines lors d'une activite communautaire.">
@@ -44,6 +48,9 @@ require_once __DIR__ . '/../includes/nav.php';
                     </article>
                 <?php endforeach; ?>
             </div>
+            <div class="quick-links">
+                <a class="button button-secondary" href="<?= e(public_url('services.php')); ?>">Voir tous les services</a>
+            </div>
         </div>
     </section>
 
@@ -58,6 +65,9 @@ require_once __DIR__ . '/../includes/nav.php';
                         <p><?= e($activity['description']); ?></p>
                     </article>
                 <?php endforeach; ?>
+                <div class="quick-links">
+                    <a class="button button-secondary" href="<?= e(public_url('activites.php')); ?>">Voir toutes les activites</a>
+                </div>
             </div>
             <div class="panel">
                 <h2>Une equipe proche des gens</h2>
