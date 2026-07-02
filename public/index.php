@@ -3,11 +3,36 @@ $page_title = 'Accueil';
 require_once __DIR__ . '/../includes/header.php';
 
 $featuredServices = Service::featured(4);
-$teamMembers = array_slice(TeamMember::all(true), 0, 3);
 $activities = Activity::upcoming(3);
 $partners = array_slice(Partner::all(true), 0, 4);
 $donationCall = DonationCall::activeOne();
 $donationCallUrl = normalize_donation_url($donationCall['button_url'] ?? SiteSetting::get('donation_url', ''));
+$homeActivitiesMonthLabel = 'À venir';
+$homeActivitiesYearLabel = date('Y');
+
+if (!empty($activities[0]['activity_date'])) {
+    $firstActivityTimestamp = strtotime((string) $activities[0]['activity_date']);
+
+    if ($firstActivityTimestamp) {
+        $homeActivityMonths = [
+            1 => 'Janvier',
+            2 => 'Février',
+            3 => 'Mars',
+            4 => 'Avril',
+            5 => 'Mai',
+            6 => 'Juin',
+            7 => 'Juillet',
+            8 => 'Août',
+            9 => 'Septembre',
+            10 => 'Octobre',
+            11 => 'Novembre',
+            12 => 'Décembre',
+        ];
+
+        $homeActivitiesMonthLabel = $homeActivityMonths[(int) date('n', $firstActivityTimestamp)] ?? $homeActivitiesMonthLabel;
+        $homeActivitiesYearLabel = date('Y', $firstActivityTimestamp);
+    }
+}
 require_once __DIR__ . '/../includes/nav.php';
 ?>
 <main id="main-content">
@@ -81,30 +106,82 @@ require_once __DIR__ . '/../includes/nav.php';
         </div>
     </section>
 
-    <section>
-        <div class="container split-grid">
-            <div class="panel">
-                <h2>Activites a venir</h2>
-                <?php foreach ($activities as $activity): ?>
-                    <article>
-                        <p class="meta"><?= e(format_datetime($activity['activity_date'], $activity['start_time'], $activity['end_time'])); ?></p>
-                        <h3><?= e($activity['title']); ?></h3>
-                        <p><?= e($activity['description']); ?></p>
-                    </article>
-                <?php endforeach; ?>
-                <div class="quick-links">
-                    <a class="button button-secondary" href="<?= e(public_url('activites.php')); ?>">Voir toutes les activites</a>
+    <section class="home-activities-section">
+        <div class="container">
+            <div class="home-activities-inner">
+                <div class="home-activities-heading">
+                    <div class="home-activities-kicker" aria-hidden="true">
+                        <span class="home-activities-calendar-icon"></span>
+                    </div>
+                    <div class="home-activities-heading-main">
+                        <h2 class="home-activities-title">Activités à venir</h2>
+                        <p class="section-intro">Des rencontres, ateliers et moments de vie communautaire pour rester actif·ve, informé·e et entouré·e.</p>
+                    </div>
+                    <a class="home-activities-details-link" href="<?= e(public_url('activites.php')); ?>">Détails</a>
                 </div>
-            </div>
-            <div class="panel">
-                <h2>Une equipe proche des gens</h2>
-                <?php foreach ($teamMembers as $member): ?>
-                    <article>
-                        <h3><?= e($member['name']); ?></h3>
-                        <p class="meta"><?= e($member['job_title']); ?></p>
-                        <p><?= e($member['bio']); ?></p>
-                    </article>
-                <?php endforeach; ?>
+                <div class="home-activities-divider" aria-hidden="true"></div>
+
+                <div class="home-activities-program">
+                    <aside class="home-activities-rail" aria-label="Repère temporel">
+                        <span class="home-activities-month"><?= e($homeActivitiesMonthLabel); ?></span>
+                        <span class="home-activities-line"></span>
+                        <strong class="home-activities-year"><?= e($homeActivitiesYearLabel); ?></strong>
+                    </aside>
+
+                    <div class="home-activities-listing">
+                        <?php if ($activities): ?>
+                            <div class="home-activities-list">
+                                <?php foreach ($activities as $activity): ?>
+                                    <?php
+                                    $activityDate = !empty($activity['activity_date']) ? format_date((string) $activity['activity_date']) : '';
+                                    $activityTime = '';
+
+                                    if (!empty($activity['start_time'])) {
+                                        $activityTime = substr((string) $activity['start_time'], 0, 5);
+
+                                        if (!empty($activity['end_time'])) {
+                                            $activityTime .= ' à ' . substr((string) $activity['end_time'], 0, 5);
+                                        }
+                                    }
+                                    ?>
+                                    <article class="home-activity-row">
+                                        <div class="home-activity-meta">
+                                            <p class="home-activity-label">Activité communautaire</p>
+                                            <?php if ($activityDate): ?>
+                                                <p class="home-activity-date"><?= e($activityDate); ?></p>
+                                            <?php endif; ?>
+                                            <?php if ($activityTime): ?>
+                                                <p class="home-activity-time"><?= e($activityTime); ?></p>
+                                            <?php endif; ?>
+                                            <?php if (!empty($activity['location'])): ?>
+                                                <p class="home-activity-place"><strong>Lieu :</strong> <?= e($activity['location']); ?></p>
+                                            <?php endif; ?>
+                                        </div>
+
+                                        <div class="home-activity-content">
+                                            <h3><?= e($activity['title'] ?? 'Activité'); ?></h3>
+                                            <p><?= e($activity['description'] ?? ''); ?></p>
+                                        </div>
+
+                                        <div class="home-activity-action">
+                                            <a class="button button-secondary" href="<?= e(public_url('activites.php')); ?>">Voir</a>
+                                            <a class="home-activity-link" href="<?= e(public_url('activites.php')); ?>" aria-label="Voir la programmation de <?= e($activity['title'] ?? 'cette activité'); ?>">&rarr;</a>
+                                        </div>
+                                    </article>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php else: ?>
+                            <div class="panel home-activities-empty">
+                                <p>Aucune activité à venir n’est publiée pour le moment. Contactez-nous pour connaître la programmation.</p>
+                                <a class="button" href="<?= e(public_url('contact.php')); ?>">Nous contacter</a>
+                            </div>
+                        <?php endif; ?>
+
+                        <div class="quick-links home-activities-footer">
+                            <a class="button" href="<?= e(public_url('activites.php')); ?>">Voir toutes les activités</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

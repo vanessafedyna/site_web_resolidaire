@@ -79,6 +79,38 @@
     .home-services-section .home-services-grid {
         grid-template-columns: 1fr;
     }
+
+    .home-activities-heading,
+    .home-activities-program,
+    .home-activity-row {
+        grid-template-columns: 1fr;
+    }
+
+    .home-activities-section {
+        padding: 5rem 0 4rem;
+    }
+
+    .home-activities-section::before {
+        height: 6rem;
+    }
+
+    .home-activities-details-link {
+        justify-self: start;
+    }
+
+    .home-activities-rail {
+        gap: 0.6rem;
+    }
+
+    .home-activities-line {
+        width: 100%;
+        min-height: 1px;
+        margin-left: 0;
+    }
+
+    .home-activity-action {
+        justify-items: start;
+    }
 }
 
 @media (max-width: 640px) {
