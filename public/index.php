@@ -2,7 +2,7 @@
 $page_title = 'Accueil';
 require_once __DIR__ . '/../includes/header.php';
 
-$featuredServices = Service::featured(3);
+$featuredServices = Service::featured(4);
 $teamMembers = array_slice(TeamMember::all(true), 0, 3);
 $activities = Activity::upcoming(3);
 $partners = array_slice(Partner::all(true), 0, 4);
@@ -34,16 +34,43 @@ require_once __DIR__ . '/../includes/nav.php';
         </div>
     </section>
 
-    <section>
+    <section class="home-services home-services-section">
         <div class="container">
-            <h2>Services phares</h2>
-            <div class="cards-grid">
+            <h2>Services et soutien</h2>
+            <p class="section-intro">Des services de proximité pour soutenir l’autonomie, les déplacements, la vie sociale et l’accès aux ressources du quartier.</p>
+            <div class="cards-grid services-grid home-services-grid">
                 <?php foreach ($featuredServices as $service): ?>
-                    <article class="card">
-                        <div class="card-media"><img src="<?= e(upload_url($service['image'])); ?>" alt="<?= e($service['title']); ?>"></div>
+                    <?php
+                    $serviceTitle = (string) ($service['title'] ?? '');
+                    $serviceLabel = 'Service de proximité';
+                    $serviceTitleNormalized = function_exists('mb_strtolower')
+                        ? mb_strtolower($serviceTitle, 'UTF-8')
+                        : strtolower($serviceTitle);
+
+                    if (str_contains($serviceTitleNormalized, 'popote')) {
+                        $serviceLabel = 'Repas à domicile';
+                    } elseif (
+                        str_contains($serviceTitleNormalized, 'transport')
+                        && (str_contains($serviceTitleNormalized, 'medical') || str_contains($serviceTitleNormalized, 'médical'))
+                    ) {
+                        $serviceLabel = 'Déplacements';
+                    } elseif (str_contains($serviceTitleNormalized, 'epicerie') || str_contains($serviceTitleNormalized, 'épicerie')) {
+                        $serviceLabel = 'Courses';
+                    } elseif (str_contains($serviceTitleNormalized, 'intervention')) {
+                        $serviceLabel = 'Soutien du milieu';
+                    }
+                    ?>
+                    <article class="card service-card">
+                        <div class="card-media<?= empty($service['image']) ? ' is-placeholder' : ''; ?>">
+                            <?php if (!empty($service['image'])): ?>
+                                <img src="<?= e(upload_url($service['image'])); ?>" alt="<?= e($service['title']); ?>">
+                            <?php endif; ?>
+                        </div>
                         <div class="card-body">
+                            <p class="service-label"><?= e($serviceLabel); ?></p>
                             <h3><?= e($service['title']); ?></h3>
                             <p><?= e($service['short_description']); ?></p>
+                            <a class="service-card-link" href="<?= e(public_url('services.php')); ?>">En savoir plus &rarr;</a>
                         </div>
                     </article>
                 <?php endforeach; ?>

@@ -275,6 +275,11 @@ button:focus-visible,
     margin-top: 1.5rem;
 }
 
+.section-intro {
+    max-width: 52rem;
+    color: var(--color-muted);
+}
+
 .hero-actions {
     display: flex;
     flex-wrap: wrap;
@@ -342,6 +347,70 @@ button:focus-visible,
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+
+.home-services-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+}
+
+.service-card {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+
+.home-services-grid .card-media {
+    aspect-ratio: 16 / 8;
+}
+
+.home-services-grid .card-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.9rem;
+    padding: 1.75rem;
+}
+
+.home-services-grid .card-media.is-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    aspect-ratio: 16 / 7;
+    background: linear-gradient(135deg, rgba(242, 210, 59, 0.9), rgba(255, 242, 181, 0.95));
+    box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.06);
+}
+
+.service-label {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 2rem;
+    margin-bottom: 0;
+    padding: 0.35rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(242, 210, 59, 0.18);
+    color: var(--color-black);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.service-card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    width: fit-content;
+    margin-top: auto;
+    color: var(--color-black);
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.2rem;
+}
+
+.service-card-link:hover,
+.service-card-link:focus-visible {
+    color: var(--color-black);
 }
 
 .meta {
@@ -428,6 +497,12 @@ textarea:focus-visible,
 select:focus-visible {
     outline: 3px solid var(--color-primary);
     outline-offset: 2px;
+}
+
+.home-services-section .home-services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
 }
 
 .flash {
