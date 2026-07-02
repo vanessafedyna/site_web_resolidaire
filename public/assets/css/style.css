@@ -251,6 +251,7 @@ button,
     color: var(--color-white);
     font-weight: 700;
     cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .button:hover,
@@ -296,6 +297,7 @@ button:focus-visible,
     color: var(--color-black);
     text-decoration: underline;
     text-underline-offset: 0.2rem;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .hero-secondary-link:hover,
@@ -406,6 +408,7 @@ button:focus-visible,
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 0.2rem;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .service-card-link:hover,
@@ -581,6 +584,7 @@ select:focus-visible {
     font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 0.2rem;
+    transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .home-activities-details-link:hover,
@@ -734,6 +738,7 @@ select:focus-visible {
     text-decoration: none;
     border: 1px solid rgba(17, 17, 17, 0.14);
     background: rgba(255, 255, 255, 0.75);
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
 }
 
 .home-activity-link:hover,

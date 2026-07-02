@@ -74,6 +74,9 @@ $footerInstagramUrl = 'https://www.instagram.com/resolidaire/';
 </footer>
 <script src="<?= e(asset_url('vendor/lucide/lucide.min.js')); ?>" defer></script>
 <script src="<?= e(asset_url('vendor/aos/aos.js')); ?>" defer></script>
+<script src="<?= e(asset_url('vendor/gsap/gsap.min.js')); ?>" defer></script>
+<script src="<?= e(asset_url('vendor/gsap/ScrollTrigger.min.js')); ?>" defer></script>
 <script src="<?= e(asset_url('js/main.js')); ?>" defer></script>
+<script src="<?= e(asset_url('js/animations.js')); ?>" defer></script>
 </body>
 </html>

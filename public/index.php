@@ -36,7 +36,7 @@ if (!empty($activities[0]['activity_date'])) {
 require_once __DIR__ . '/../includes/nav.php';
 ?>
 <main id="main-content">
-    <section class="hero" data-aos="fade-up">
+    <section class="hero">
         <div class="container hero-grid">
             <div class="hero-copy">
                 <span class="eyebrow">Pour les aîné·e·s, les proches aidants et les familles du quartier</span>
@@ -59,7 +59,7 @@ require_once __DIR__ . '/../includes/nav.php';
         </div>
     </section>
 
-    <section class="home-services home-services-section" data-aos="fade-up" data-aos-delay="100">
+    <section class="home-services home-services-section">
         <div class="container">
             <h2>Services et soutien</h2>
             <p class="section-intro">Des services de proximité pour soutenir l’autonomie, les déplacements, la vie sociale et l’accès aux ressources du quartier.</p>
@@ -106,7 +106,7 @@ require_once __DIR__ . '/../includes/nav.php';
         </div>
     </section>
 
-    <section class="home-activities-section" data-aos="fade-up" data-aos-delay="150">
+    <section class="home-activities-section">
         <div class="container">
             <div class="home-activities-inner">
                 <div class="home-activities-heading">
