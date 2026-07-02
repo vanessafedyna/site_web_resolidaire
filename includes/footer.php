@@ -8,9 +8,8 @@ $quickLinks = [
     ['label' => 'Faire un don', 'href' => public_url('don.php')],
 ];
 
-/* FOOTER ENCODING FIX */
 $footerIntro = html_entity_decode(
-    $siteSettings['footer_intro'] ?? "Résolidaire soutient les aînés, les proches aidants et les familles du quartier.",
+    $siteSettings['footer_intro'] ?? "R\u{00E9}solidaire soutient les a\u{00EE}n\u{00E9}s, les proches aidants et les familles du quartier.",
     ENT_QUOTES | ENT_HTML5,
     'UTF-8'
 );

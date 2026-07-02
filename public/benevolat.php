@@ -14,11 +14,11 @@ $campaignGallery = [
 ];
 $volunteerRoles = [
     [
-        'title' => 'Chauffeur·se / baladeur·se',
+        'title' => "Chauffeur\u{00B7}se / baladeur\u{00B7}se",
         'text' => 'Accompagner des personnes dans leurs deplacements et contribuer a briser l isolement.',
     ],
     [
-        'title' => 'Accompagnateur·trice au transport medical',
+        'title' => "Accompagnateur\u{00B7}trice au transport medical",
         'text' => 'Offrir une presence rassurante lors de deplacements vers des rendez-vous medicaux.',
     ],
     [
