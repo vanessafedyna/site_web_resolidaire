@@ -166,3 +166,40 @@ function official_contact_hours_text(): string
 {
     return implode(' / ', official_contact_hours_lines());
 }
+
+function official_facebook_url(): string
+{
+    return 'https://www.facebook.com/Resolidaire.inc/';
+}
+
+function official_instagram_url(): string
+{
+    return 'https://www.instagram.com/resolidaire/';
+}
+
+function official_donation_url(): string
+{
+    return 'https://www.canadahelps.org/fr/organismesdebienfaisance/resolidaire/';
+}
+
+function normalize_facebook_url(?string $url): string
+{
+    $url = trim((string) $url);
+
+    if ($url === '' || preg_match('#^https://(?:www\.)?facebook\.com/?$#i', $url)) {
+        return official_facebook_url();
+    }
+
+    return $url;
+}
+
+function normalize_donation_url(?string $url): string
+{
+    $url = trim((string) $url);
+
+    if ($url === '' || preg_match('#^https://(?:www\.)?example\.com(?:/.*)?/?$#i', $url)) {
+        return official_donation_url();
+    }
+
+    return $url;
+}

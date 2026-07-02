@@ -2,7 +2,7 @@
 $page_title = 'Faire un don';
 $page_css = 'css/don.css';
 require_once __DIR__ . '/../includes/header.php';
-$externalDonationUrl = SiteSetting::get('donation_url', '#');
+$externalDonationUrl = normalize_donation_url(SiteSetting::get('donation_url', ''));
 require_once __DIR__ . '/../includes/nav.php';
 
 $donImage = [

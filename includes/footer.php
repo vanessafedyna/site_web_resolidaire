@@ -34,6 +34,8 @@ if (
 ) {
     $footerHours = official_contact_hours_text();
 }
+$footerFacebookUrl = 'https://www.facebook.com/Resolidaire.inc/';
+$footerInstagramUrl = 'https://www.instagram.com/resolidaire/';
 ?>
 <?php if ($flash): ?>
     <div class="flash flash-<?= e($flash['type']); ?>"><?= e($flash['message']); ?></div>
@@ -61,9 +63,12 @@ if (
         </section>
 
         <section>
-            <h2>Suivre Resolidaire</h2>
-            <p>Restez proche de la vie de quartier, des activites et des appels a l'entraide.</p>
-            <a class="button button-secondary" href="<?= e($siteSettings['facebook_url'] ?? '#'); ?>" target="_blank" rel="noopener">Facebook</a>
+            <h2>Suivez-nous</h2>
+            <p>Retrouvez Resolidaire sur les reseaux sociaux.</p>
+            <div class="quick-links">
+                <a class="button button-secondary" href="<?= e($footerFacebookUrl); ?>" target="_blank" rel="noopener" style="color: #f5f2e8; border-color: #f5f2e8;">Facebook</a>
+                <a class="button button-secondary" href="<?= e($footerInstagramUrl); ?>" target="_blank" rel="noopener" style="color: #f5f2e8; border-color: #f5f2e8;">Instagram</a>
+            </div>
         </section>
     </div>
 </footer>

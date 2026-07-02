@@ -10,7 +10,10 @@ class SiteSetting
         $settings = [];
 
         foreach ($items as $item) {
-            $settings[$item['setting_key']] = $item['setting_value'];
+            $settings[$item['setting_key']] = self::normalizeValue(
+                $item['setting_key'],
+                (string) $item['setting_value']
+            );
         }
 
         return $settings;
@@ -22,7 +25,7 @@ class SiteSetting
         $stmt->execute(['setting_key' => $key]);
         $value = $stmt->fetchColumn();
 
-        return $value !== false ? (string) $value : $default;
+        return $value !== false ? self::normalizeValue($key, (string) $value) : self::normalizeValue($key, $default);
     }
 
     public static function upsertMany(array $settings): void
@@ -39,5 +42,18 @@ class SiteSetting
                 'setting_value' => $value,
             ]);
         }
+    }
+
+    private static function normalizeValue(string $key, string $value): string
+    {
+        if ($key === 'facebook_url') {
+            return normalize_facebook_url($value);
+        }
+
+        if ($key === 'donation_url') {
+            return normalize_donation_url($value);
+        }
+
+        return $value;
     }
 }

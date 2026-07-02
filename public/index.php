@@ -7,6 +7,7 @@ $teamMembers = array_slice(TeamMember::all(true), 0, 3);
 $activities = Activity::upcoming(3);
 $partners = array_slice(Partner::all(true), 0, 4);
 $donationCall = DonationCall::activeOne();
+$donationCallUrl = normalize_donation_url($donationCall['button_url'] ?? SiteSetting::get('donation_url', ''));
 require_once __DIR__ . '/../includes/nav.php';
 ?>
 <main id="main-content">
@@ -78,7 +79,7 @@ require_once __DIR__ . '/../includes/nav.php';
                     <span class="eyebrow">Appel a la solidarite</span>
                     <h2><?= e($donationCall['title']); ?></h2>
                     <p><?= e($donationCall['description']); ?></p>
-                    <a class="button" href="<?= e($donationCall['button_url'] ?: SiteSetting::get('donation_url', '#')); ?>" target="_blank" rel="noopener">
+                    <a class="button" href="<?= e($donationCallUrl); ?>" target="_blank" rel="noopener">
                         <?= e($donationCall['button_text'] ?: 'Faire un don'); ?>
                     </a>
                 </div>
