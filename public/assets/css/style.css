@@ -557,35 +557,12 @@ select:focus-visible {
 }
 
 .home-activities-calendar-icon {
-    position: relative;
-    width: 1.55rem;
-    height: 1.35rem;
-    border: 2px solid var(--color-black);
-    border-radius: 0.35rem;
-    background: rgba(255, 255, 255, 0.95);
-}
-
-.home-activities-calendar-icon::before,
-.home-activities-calendar-icon::after {
-    content: "";
-    position: absolute;
-    top: -0.28rem;
-    width: 0.28rem;
-    height: 0.42rem;
-    border-radius: 999px;
-    background: var(--color-black);
-}
-
-.home-activities-calendar-icon::before {
-    left: 0.28rem;
-}
-
-.home-activities-calendar-icon::after {
-    right: 0.28rem;
-}
-
-.home-activities-calendar-icon {
-    box-shadow: inset 0 0.42rem 0 0 var(--color-primary);
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    color: var(--color-black);
+    stroke-width: 2;
+    flex-shrink: 0;
 }
 
 .home-activities-heading-main {
@@ -794,4 +771,12 @@ select:focus-visible {
 .flash-error {
     background: #fdeaea;
     color: #8e1d1d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    [data-aos] {
+        transition: none !important;
+        transform: none !important;
+        opacity: 1 !important;
+    }
 }

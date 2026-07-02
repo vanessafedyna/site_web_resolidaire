@@ -36,7 +36,7 @@ if (!empty($activities[0]['activity_date'])) {
 require_once __DIR__ . '/../includes/nav.php';
 ?>
 <main id="main-content">
-    <section class="hero">
+    <section class="hero" data-aos="fade-up">
         <div class="container hero-grid">
             <div class="hero-copy">
                 <span class="eyebrow">Pour les aîné·e·s, les proches aidants et les familles du quartier</span>
@@ -59,7 +59,7 @@ require_once __DIR__ . '/../includes/nav.php';
         </div>
     </section>
 
-    <section class="home-services home-services-section">
+    <section class="home-services home-services-section" data-aos="fade-up" data-aos-delay="100">
         <div class="container">
             <h2>Services et soutien</h2>
             <p class="section-intro">Des services de proximité pour soutenir l’autonomie, les déplacements, la vie sociale et l’accès aux ressources du quartier.</p>
@@ -106,12 +106,12 @@ require_once __DIR__ . '/../includes/nav.php';
         </div>
     </section>
 
-    <section class="home-activities-section">
+    <section class="home-activities-section" data-aos="fade-up" data-aos-delay="150">
         <div class="container">
             <div class="home-activities-inner">
                 <div class="home-activities-heading">
                     <div class="home-activities-kicker" aria-hidden="true">
-                        <span class="home-activities-calendar-icon"></span>
+                        <i class="home-activities-calendar-icon" data-lucide="calendar-days" aria-hidden="true"></i>
                     </div>
                     <div class="home-activities-heading-main">
                         <h2 class="home-activities-title">Activités à venir</h2>

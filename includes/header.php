@@ -15,6 +15,7 @@ $pageTitle = $page_title ?? 'Resolidaire';
     <title><?= e($pageTitle); ?> | R&#233;solidaire</title>
     <meta name="description" content="R&#233;solidaire accompagne les a&#238;n&#233;s, les proches aidants et la communaut&#233; avec des services humains et accessibles.">
     <link rel="stylesheet" href="<?= e(asset_url('css/reset.css')); ?>">
+    <link rel="stylesheet" href="<?= e(asset_url('vendor/aos/aos.css')); ?>">
     <link rel="stylesheet" href="<?= e(asset_url('css/style.css')); ?>">
     <link rel="stylesheet" href="<?= e(asset_url('css/responsive.css')); ?>">
     <?php if (!empty($page_css ?? null)): ?>

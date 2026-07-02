@@ -8,4 +8,17 @@ document.addEventListener('DOMContentLoaded', function () {
             toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
         });
     }
+
+    if (window.lucide) {
+        window.lucide.createIcons();
+    }
+
+    if (window.AOS) {
+        window.AOS.init({
+            duration: 700,
+            once: true,
+            easing: 'ease-out',
+            offset: 80
+        });
+    }
 });
