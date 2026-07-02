@@ -1,0 +1,371 @@
+/* BENEVOLE HERO */
+.benevolat-hero {
+    padding-bottom: 2.75rem;
+}
+
+.benevolat-hero-panel {
+    padding: 2rem;
+}
+
+/* BENEVOLAT HERO IMAGE LAYOUT */
+.benevolat-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 52%) minmax(0, 48%);
+    align-items: center;
+    gap: clamp(2rem, 4vw, 3rem);
+}
+
+.benevolat-hero-copy p {
+    max-width: 40rem;
+    line-height: 1.7;
+}
+
+.benevolat-hero-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 360px;
+    max-height: 460px;
+    height: 100%;
+    overflow: hidden;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 28px;
+    box-shadow: var(--shadow-soft);
+}
+
+.benevolat-hero-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.benevolat-positions {
+    padding-top: 2.5rem;
+}
+
+.benevolat-section-heading {
+    max-width: 760px;
+    margin: 0 auto 1.75rem;
+    text-align: center;
+}
+
+.benevolat-section-heading p {
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.benevolat-card,
+.benevolat-gallery-card,
+.benevolat-cta-panel {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
+}
+
+/* BENEVOLE POSITIONS GRID */
+.benevolat-positions-grid,
+.benevolat-benefits-grid,
+.benevolat-gallery-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.benevolat-positions-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.benevolat-card {
+    border-radius: var(--radius-lg);
+    padding: 1.6rem;
+}
+
+.benevolat-card h3 {
+    margin-bottom: 0.8rem;
+}
+
+.benevolat-card p {
+    margin-bottom: 0;
+    line-height: 1.65;
+}
+
+.benevolat-dot {
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+}
+
+/* BENEVOLE BENEFITS */
+.benevolat-benefits {
+    padding-top: 1rem;
+}
+
+.benevolat-benefits-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.benevolat-benefit-card {
+    background: linear-gradient(180deg, #fffef8 0%, #ffffff 100%);
+}
+
+/* BENEVOLAT CAMPAIGN CAROUSEL */
+.benevolat-gallery {
+    padding-top: 1rem;
+}
+
+.benevolat-carousel {
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.benevolat-carousel-shell {
+    position: relative;
+}
+
+.benevolat-carousel-viewport {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+
+.benevolat-carousel-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.benevolat-carousel-track {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 70%;
+    gap: 1.25rem;
+    padding: 0.25rem 15%;
+}
+
+.benevolat-carousel-slide {
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+}
+
+.benevolat-gallery-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 360px;
+    padding: 0.9rem;
+    border-radius: 28px;
+}
+
+.benevolat-gallery-card img,
+.benevolat-gallery-placeholder {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 18px;
+}
+
+.benevolat-gallery-card img {
+    display: block;
+    max-height: 720px;
+}
+
+.benevolat-gallery-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.65rem;
+    padding: 1.75rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(242, 210, 59, 0.16), rgba(255, 255, 255, 0.96));
+    border: 1px dashed rgba(17, 17, 17, 0.18);
+    color: #6f6752;
+}
+
+.benevolat-gallery-placeholder span {
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+.benevolat-gallery-placeholder small {
+    line-height: 1.55;
+}
+
+/* CAROUSEL CONTROLS */
+.benevolat-carousel-control {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+    color: var(--color-black);
+    box-shadow: 0 12px 28px rgba(17, 17, 17, 0.08);
+    transform: translateY(-50%);
+    transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.benevolat-carousel-control-prev {
+    left: 0.35rem;
+}
+
+.benevolat-carousel-control-next {
+    right: 0.35rem;
+}
+
+.benevolat-carousel-control:hover,
+.benevolat-carousel-control:focus-visible {
+    transform: translateY(calc(-50% - 1px));
+    background: #fffef8;
+    box-shadow: 0 16px 30px rgba(17, 17, 17, 0.12);
+}
+
+.benevolat-carousel-control:disabled {
+    opacity: 0.45;
+    cursor: default;
+    transform: none;
+    box-shadow: 0 8px 18px rgba(17, 17, 17, 0.05);
+}
+
+.benevolat-carousel-control span {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.benevolat-carousel-pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.65rem;
+    margin-top: 1.25rem;
+}
+
+.benevolat-carousel-dot {
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    border: 1px solid rgba(17, 17, 17, 0.18);
+    background: transparent;
+    transition: background 180ms ease, transform 180ms ease, border-color 180ms ease;
+}
+
+.benevolat-carousel-dot.is-active {
+    background: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.benevolat-carousel-dot:hover,
+.benevolat-carousel-dot:focus-visible {
+    transform: scale(1.08);
+    border-color: var(--color-black);
+}
+
+.benevolat-carousel-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+/* BENEVOLE FINAL CTA */
+.benevolat-cta {
+    padding-top: 1rem;
+}
+
+.benevolat-cta-panel {
+    border-radius: 32px;
+    background: linear-gradient(135deg, #fff9df 0%, #fffdf3 100%);
+}
+
+.benevolat-cta-panel p {
+    line-height: 1.7;
+}
+
+@media (max-width: 980px) {
+    /* BENEVOLAT HERO RESPONSIVE */
+    .benevolat-hero {
+        padding-bottom: 2.25rem;
+    }
+
+    .benevolat-hero-panel {
+        padding: 1.75rem;
+    }
+
+    .benevolat-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .benevolat-hero-media {
+        min-height: 320px;
+        max-height: 420px;
+    }
+
+    .benevolat-positions-grid,
+    .benevolat-benefits-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    /* CAROUSEL RESPONSIVE */
+    .benevolat-carousel-track {
+        grid-auto-columns: 100%;
+        padding: 0 0.25rem;
+    }
+
+    .benevolat-gallery-card img {
+        max-height: 640px;
+    }
+}
+
+@media (max-width: 640px) {
+    /* BENEVOLAT HERO RESPONSIVE */
+    .benevolat-positions-grid,
+    .benevolat-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .benevolat-hero-panel,
+    .benevolat-card,
+    .benevolat-gallery-card,
+    .benevolat-cta-panel {
+        border-radius: 24px;
+    }
+
+    .benevolat-hero-panel {
+        padding: 1.25rem;
+    }
+
+    .benevolat-hero-media {
+        min-height: 260px;
+        max-height: 320px;
+        height: 260px;
+    }
+
+    .benevolat-gallery-card {
+        min-height: 260px;
+    }
+
+    .benevolat-gallery-card img {
+        max-height: 500px;
+    }
+
+    .benevolat-carousel-control {
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+
+    .benevolat-hero .button,
+    .benevolat-cta .button {
+        width: 100%;
+    }
+
+    .benevolat-cta .quick-links {
+        width: 100%;
+    }
+}

@@ -26,6 +26,19 @@ body.admin-body {
     padding: 1.5rem;
 }
 
+.admin-brand {
+    display: grid;
+    gap: 0.75rem;
+    color: #f8f4e6;
+    text-decoration: none;
+}
+
+.brand-logo-admin {
+    width: min(100%, 220px);
+    height: auto;
+    display: block;
+}
+
 .admin-sidebar ul {
     display: grid;
     gap: 0.4rem;

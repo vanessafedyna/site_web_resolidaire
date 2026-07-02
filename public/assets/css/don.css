@@ -1,0 +1,179 @@
+/* DON PAGE LAYOUT */
+.don-section-heading {
+    max-width: 720px;
+    margin: 0 auto 1.75rem;
+    text-align: center;
+}
+
+.don-section-heading h2 {
+    margin-bottom: 0;
+}
+
+.don-card,
+.don-mission-media,
+.don-cta-panel {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
+}
+
+/* DON MISSION SECTION */
+.don-mission {
+    padding-top: 1.5rem;
+}
+
+.don-mission-grid,
+.don-impact-grid,
+.don-methods-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.don-mission-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+}
+
+.don-mission-copy p,
+.don-cta-panel p {
+    line-height: 1.7;
+}
+
+.don-mission-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 380px;
+    height: 380px;
+    overflow: hidden;
+    border-radius: 28px;
+}
+
+.don-mission-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.don-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(242, 210, 59, 0.14), rgba(255, 255, 255, 0.96));
+    color: #6f6752;
+    border: 1px dashed rgba(17, 17, 17, 0.18);
+    border-radius: 22px;
+}
+
+.don-placeholder span {
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+/* DON IMPACT CARDS */
+.don-impact-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.don-card {
+    border-radius: var(--radius-lg);
+    padding: 1.6rem;
+}
+
+.don-card h3 {
+    margin-bottom: 0.8rem;
+}
+
+.don-card p {
+    margin-bottom: 0;
+    line-height: 1.65;
+}
+
+.don-dot {
+    display: inline-block;
+    width: 0.9rem;
+    height: 0.9rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+}
+
+/* DON METHODS */
+.don-methods {
+    padding-top: 1rem;
+}
+
+.don-methods-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.don-method-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.don-method-card .button {
+    margin-top: auto;
+}
+
+.don-address {
+    margin-bottom: 0;
+}
+
+/* DON FINAL CTA */
+.don-cta {
+    padding-top: 1rem;
+}
+
+.don-cta-panel {
+    border-radius: 32px;
+    background: linear-gradient(135deg, #fff9df 0%, #fffdf3 100%);
+}
+
+@media (max-width: 980px) {
+    .don-mission-grid,
+    .don-impact-grid,
+    .don-methods-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .don-mission-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .don-impact-grid,
+    .don-methods-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .don-card,
+    .don-mission-media,
+    .don-cta-panel {
+        border-radius: 24px;
+    }
+
+    .don-mission-media {
+        min-height: 260px;
+        height: 260px;
+    }
+
+    .don-method-card .button,
+    .don-cta .button {
+        width: 100%;
+    }
+
+    .don-cta .quick-links {
+        width: 100%;
+    }
+}

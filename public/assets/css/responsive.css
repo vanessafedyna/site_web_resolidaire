@@ -33,7 +33,7 @@
         flex-wrap: wrap;
         gap: 1rem;
         min-height: auto;
-        padding: 0.85rem 0;
+        padding: 0.75rem 0;
     }
 
     .brand {
@@ -44,21 +44,53 @@
     }
 
     .brand-logo {
-        max-height: 56px;
+        /* NAV LOGO SIZE OPTIMIZATION */
+        max-height: 50px;
         max-width: min(100%, 220px);
     }
 
     .brand-copy {
         text-align: right;
+        max-width: 150px;
     }
 
     .brand small {
-        font-size: 0.82rem;
+        font-size: 0.76rem;
     }
 
     .main-nav ul {
         flex-direction: column;
         align-items: stretch;
         padding-bottom: 1rem;
+    }
+
+    /* HERO LAYOUT UPDATE */
+    .hero-media,
+    .hero-media img {
+        min-height: 420px;
+    }
+}
+
+@media (max-width: 640px) {
+    .brand-logo {
+        /* NAV LOGO SIZE OPTIMIZATION */
+        max-height: 42px;
+        max-width: min(100%, 180px);
+    }
+
+    .brand-copy {
+        max-width: 120px;
+    }
+
+    .brand small {
+        font-size: 0.72rem;
+        line-height: 1.1;
+    }
+
+    /* HOME HERO IMAGE */
+    .hero-media,
+    .hero-media img {
+        min-height: 320px;
+        height: 320px;
     }
 }

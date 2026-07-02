@@ -1,0 +1,315 @@
+/* SERVICES PAGE LAYOUT */
+.page-hero {
+    /* SERVICES HERO REFINEMENT */
+    padding: 2.8rem 0 1.6rem;
+}
+
+.page-hero .panel {
+    padding: 1.75rem 1.5rem;
+}
+
+.services-intro {
+    padding-top: 0;
+}
+
+.services-intro .container {
+    max-width: 840px;
+}
+
+.services-intro p {
+    font-size: 1.08rem;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+.services-overview {
+    padding-top: 0;
+}
+
+.services-cards-grid,
+.services-steps-grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.services-cards-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+/* SERVICES CARDS */
+.service-card,
+.service-step {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.service-card {
+    padding: 0;
+    overflow: hidden;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.service-card-link {
+    /* CLICKABLE SERVICE CARDS */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    min-height: 100%;
+    padding: 1.75rem;
+    color: inherit;
+    text-decoration: none;
+}
+
+.service-card:hover,
+.service-card:focus-within {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 44px rgba(17, 17, 17, 0.12);
+}
+
+.service-card h2,
+.service-card-link h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0;
+}
+
+.service-card p,
+.service-card-link p {
+    margin-bottom: 0;
+    line-height: 1.65;
+}
+
+.service-card-link .button {
+    margin-top: auto;
+    pointer-events: none;
+}
+
+.services-detail-list {
+    padding-top: 1rem;
+}
+
+.services-detail-stack {
+    display: grid;
+    gap: 2rem;
+}
+
+/* SERVICES DETAIL SECTIONS */
+.service-detail {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    align-items: stretch;
+    gap: 2rem;
+    padding: 2rem;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 32px;
+    box-shadow: var(--shadow-soft);
+    scroll-margin-top: 7rem;
+}
+
+.service-detail-reverse .service-detail-media {
+    order: 2;
+}
+
+.service-detail-reverse .service-detail-copy {
+    order: 1;
+}
+
+.service-detail-media {
+    /* SERVICE IMAGE NORMALIZATION */
+    aspect-ratio: 4 / 3;
+    min-height: 320px;
+    max-height: 360px;
+    overflow: hidden;
+    border-radius: 24px;
+    background: linear-gradient(135deg, rgba(242, 210, 59, 0.2), rgba(255, 255, 255, 0.92));
+}
+
+.service-detail-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-detail-copy {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.service-detail-copy .eyebrow {
+    margin-bottom: 1.25rem;
+}
+
+.service-detail-copy p,
+.services-panel p {
+    line-height: 1.7;
+}
+
+/* SERVICES PLACEHOLDER IMAGES */
+.service-detail-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    text-align: center;
+    color: #6f6752;
+    border: 1px dashed rgba(17, 17, 17, 0.18);
+}
+
+.service-detail-placeholder span {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-black);
+}
+
+.service-detail-placeholder small {
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.services-section-heading {
+    max-width: 680px;
+    margin-bottom: 1.5rem;
+}
+
+.services-steps {
+    /* SERVICE REQUEST STEPS */
+    padding-top: 1rem;
+}
+
+.services-steps-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-bottom: 1.5rem;
+}
+
+.service-step {
+    position: relative;
+    padding: 1.5rem;
+    background: linear-gradient(180deg, #fffef8 0%, #ffffff 100%);
+}
+
+.service-step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: var(--color-primary);
+    color: var(--color-black);
+    font-weight: 700;
+}
+
+.service-step-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    margin-bottom: 1rem;
+    border-radius: 50%;
+    background: rgba(242, 210, 59, 0.28);
+    color: var(--color-black);
+    font-size: 1.1rem;
+}
+
+.service-step h3 {
+    margin-bottom: 0;
+    font-size: 1.1rem;
+    line-height: 1.45;
+}
+
+.services-panel {
+    border-radius: 32px;
+}
+
+.services-cta {
+    /* SERVICES FINAL CTA */
+    padding-top: 1rem;
+}
+
+.services-cta-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #fff9df 0%, #fffdf3 100%);
+}
+
+.services-cta-panel p {
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
+}
+
+@media (max-width: 980px) {
+    .services-cards-grid,
+    .service-detail {
+        grid-template-columns: 1fr;
+    }
+
+    .services-steps-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .service-detail {
+        gap: 1.5rem;
+        padding: 1.5rem;
+    }
+
+    .service-detail-reverse .service-detail-media,
+    .service-detail-reverse .service-detail-copy {
+        order: initial;
+    }
+
+    .service-detail-media {
+        min-height: 280px;
+        max-height: 320px;
+    }
+}
+
+@media (max-width: 640px) {
+    .page-hero {
+        padding: 2.4rem 0 1.35rem;
+    }
+
+    .service-card,
+    .service-step,
+    .service-detail,
+    .services-panel {
+        border-radius: 24px;
+    }
+
+    .service-card,
+    .service-step,
+    .service-detail {
+        padding: 1.25rem;
+    }
+
+    .service-detail-media {
+        min-height: 260px;
+        max-height: 320px;
+    }
+
+    .services-steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .service-card .button,
+    .service-detail-copy .button,
+    .services-steps .button,
+    .services-cta .button {
+        width: 100%;
+    }
+
+    .services-cta-panel .quick-links {
+        width: 100%;
+    }
+}
