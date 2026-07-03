@@ -130,7 +130,8 @@
     .home-activities-heading,
     .home-activities-program,
     .home-activity-row,
-    .home-contact-strip-inner {
+    .home-contact-strip-inner,
+    .home-engagement-grid {
         grid-template-columns: 1fr;
     }
 
@@ -170,6 +171,18 @@
 
     .home-contact-strip-actions {
         justify-content: center;
+    }
+
+    .home-engagement-section {
+        padding: 4.25rem 0;
+    }
+
+    .home-engagement-heading {
+        max-width: none;
+    }
+
+    .home-engagement-card {
+        min-height: 18rem;
     }
 }
 
@@ -253,5 +266,27 @@
     .home-contact-strip-actions .button,
     .home-contact-strip-phone {
         width: 100%;
+    }
+
+    .home-engagement-section {
+        padding: 3.75rem 0;
+    }
+
+    .home-engagement-grid {
+        gap: 1rem;
+    }
+
+    .home-engagement-card {
+        min-height: auto;
+        padding: 1.4rem;
+        gap: 1.25rem;
+    }
+
+    .home-engagement-card h3 {
+        font-size: clamp(1.55rem, 7vw, 1.95rem);
+    }
+
+    .home-engagement-card p {
+        max-width: none;
     }
 }

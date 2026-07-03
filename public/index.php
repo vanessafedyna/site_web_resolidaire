@@ -245,6 +245,52 @@ require_once __DIR__ . '/../includes/nav.php';
         </div>
     </section>
 
+    <section class="home-engagement-section" aria-labelledby="home-engagement-title">
+        <div class="container">
+            <div class="home-engagement-inner">
+                <div class="home-engagement-heading">
+                    <h2 class="home-engagement-title" id="home-engagement-title">S&rsquo;impliquer avec R&#233;solidaire</h2>
+                    <p class="home-engagement-text">Que ce soit par du temps, un don ou un engagement professionnel, chaque contribution aide &#224; soutenir les personnes a&#238;n&#233;es du quartier.</p>
+                </div>
+
+                <div class="home-engagement-grid">
+                    <a class="home-engagement-card home-engagement-card--volunteer" href="<?= e(public_url('benevolat.php')); ?>">
+                        <div class="home-engagement-icon" aria-hidden="true">
+                            <i data-lucide="users" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h3>Devenir b&#233;n&#233;vole</h3>
+                            <p>Offrez du temps, de l&rsquo;&#233;coute ou un coup de main aux personnes du quartier.</p>
+                        </div>
+                        <span class="home-engagement-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+
+                    <a class="home-engagement-card home-engagement-card--donation" href="<?= e(public_url('don.php')); ?>">
+                        <div class="home-engagement-icon" aria-hidden="true">
+                            <i data-lucide="hand-heart" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h3>Faire un don</h3>
+                            <p>Soutenez les services de proximit&#233;, les activit&#233;s et l&rsquo;accompagnement offert aux a&#238;n&#233;&#183;e&#183;s.</p>
+                        </div>
+                        <span class="home-engagement-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+
+                    <a class="home-engagement-card home-engagement-card--career" href="<?= e(public_url('a-propos.php#carrieres')); ?>">
+                        <div class="home-engagement-icon" aria-hidden="true">
+                            <i data-lucide="briefcase-business" aria-hidden="true"></i>
+                        </div>
+                        <div>
+                            <h3>Carri&#232;res</h3>
+                            <p>Consultez les possibilit&#233;s d&rsquo;emploi, de stage ou de candidature spontan&#233;e.</p>
+                        </div>
+                        <span class="home-engagement-arrow" aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <?php if ($donationCall): ?>
         <section>
             <div class="container">

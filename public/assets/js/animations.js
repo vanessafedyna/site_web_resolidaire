@@ -218,4 +218,35 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+
+    var engagementSection = document.querySelector('.home-engagement-section');
+
+    animateOnEnter(engagementSection, function () {
+        var engagementHeadingTargets = compact([
+            engagementSection.querySelector('.home-engagement-title'),
+            engagementSection.querySelector('.home-engagement-text')
+        ]);
+        var engagementCards = toArray('.home-engagement-card', engagementSection);
+
+        if (engagementHeadingTargets.length) {
+            gsap.from(engagementHeadingTargets, {
+                opacity: 0,
+                y: 22,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: 'power2.out'
+            });
+        }
+
+        if (engagementCards.length) {
+            gsap.from(engagementCards, {
+                opacity: 0,
+                y: 24,
+                duration: 0.74,
+                stagger: 0.12,
+                ease: 'power2.out',
+                delay: 0.08
+            });
+        }
+    });
 });
