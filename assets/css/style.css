@@ -898,6 +898,180 @@ select:focus-visible {
     max-width: 42rem;
 }
 
+.home-community-section {
+    position: relative;
+    padding: clamp(5rem, 8vw, 6.75rem) 0 clamp(6rem, 9vw, 7.75rem);
+    background:
+        radial-gradient(circle at 18% 18%, rgba(242, 210, 59, 0.34) 0%, rgba(242, 210, 59, 0) 30%),
+        linear-gradient(120deg, #fbf1bf 0%, #f8efc7 46%, #fff9ee 100%);
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.home-community-section::before {
+    content: "";
+    position: absolute;
+    top: -10rem;
+    left: -10rem;
+    width: min(30rem, 60vw);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: rgba(255, 250, 236, 0.6);
+    filter: blur(8px);
+    pointer-events: none;
+}
+
+.home-community-section::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: min(44rem, 56vw);
+    height: clamp(4.75rem, 10vw, 7rem);
+    background: #fffaf0;
+    clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+    pointer-events: none;
+}
+
+.home-community-inner {
+    position: relative;
+    z-index: 1;
+    width: min(calc(100% - 2rem), 1240px);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 4vw, 5rem);
+    align-items: center;
+    min-height: clamp(28rem, 42vw, 35rem);
+}
+
+.home-community-content {
+    max-width: 35rem;
+    padding: 0 0 2rem;
+}
+
+.home-community-title {
+    margin-bottom: 1.25rem;
+    max-width: 15ch;
+    font-size: clamp(2.3rem, 4.1vw, 4rem);
+    letter-spacing: -0.03em;
+    text-wrap: balance;
+}
+
+.home-community-text {
+    margin-bottom: 0;
+    max-width: 30rem;
+    color: #2e2819;
+    font-size: clamp(1.08rem, 1.3vw, 1.2rem);
+    line-height: 1.75;
+}
+
+.home-community-actions {
+    margin-top: 2rem;
+}
+
+.home-community-actions .button-secondary {
+    background: rgba(255, 250, 236, 0.45);
+}
+
+.home-community-visual {
+    position: relative;
+    min-width: 0;
+    min-height: clamp(24rem, 36vw, 31rem);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    padding: 1rem 0 2rem 1.25rem;
+}
+
+.home-community-visual::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 1rem;
+    width: clamp(15rem, 27vw, 23rem);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 32%, #f7df67 0%, #f2d23b 58%, #ebc911 100%);
+    opacity: 0.95;
+}
+
+.home-community-visual::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 3.5rem;
+    width: clamp(11rem, 24vw, 18rem);
+    height: clamp(11rem, 26vw, 19rem);
+    border-radius: 2.5rem;
+    background: rgba(255, 250, 236, 0.72);
+    box-shadow: inset 0 0 0 1px rgba(17, 17, 17, 0.05);
+    transform: rotate(-10deg);
+}
+
+.home-community-media {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 33rem);
+    height: clamp(23rem, 37vw, 31rem);
+    overflow: hidden;
+    border-radius: 2.5rem 7rem 2.5rem 2.5rem;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    box-shadow: 0 28px 55px rgba(17, 17, 17, 0.16);
+    background: #f7f0ce;
+    transform: translateY(-0.5rem);
+}
+
+.home-community-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.home-community-card {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.85rem;
+    max-width: 16rem;
+    padding: 1rem 1.15rem;
+    border-radius: 1.5rem;
+    border: 1px solid rgba(17, 17, 17, 0.08);
+    background: rgba(17, 17, 17, 0.94);
+    color: #fff9ee;
+    box-shadow: 0 18px 32px rgba(17, 17, 17, 0.22);
+}
+
+.home-community-card p {
+    margin-bottom: 0;
+    font-weight: 700;
+    line-height: 1.35;
+}
+
+.home-community-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 1rem;
+    background: rgba(242, 210, 59, 0.22);
+    color: #fff9ee;
+    flex-shrink: 0;
+}
+
+.home-community-icon svg {
+    display: block;
+    width: 1.45rem;
+    height: 1.45rem;
+    stroke-width: 2;
+}
+
 .flash {
     position: fixed;
     right: 1rem;

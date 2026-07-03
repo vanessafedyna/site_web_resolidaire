@@ -200,6 +200,30 @@ require_once __DIR__ . '/../includes/nav.php';
         </div>
     </section>
 
+    <section class="home-community-section">
+        <div class="home-community-inner">
+            <div class="home-community-content">
+                <h2 class="home-community-title">Un lieu pour rester entour&#233;&#183;e</h2>
+                <p class="home-community-text">R&#233;solidaire est un point d&rsquo;ancrage dans le quartier. L&rsquo;organisme offre un espace de confiance o&#249; les personnes a&#238;n&#233;es peuvent recevoir du soutien, participer &#224; des activit&#233;s et maintenir des liens avec leur communaut&#233;.</p>
+                <div class="quick-links home-community-actions">
+                    <a class="button" href="<?= e(public_url('a-propos.php')); ?>">Nous conna&#238;tre</a>
+                    <a class="button button-secondary" href="<?= e(public_url('contact.php')); ?>">Nous contacter</a>
+                </div>
+            </div>
+            <div class="home-community-visual">
+                <div class="home-community-media">
+                    <img src="<?= e(asset_url('images/hero/home-hero-photo.png')); ?>" alt="Personnes ainees et intervenante de Resolidaire reunies autour d'une table dans le local communautaire.">
+                </div>
+                <div class="home-community-card">
+                    <div class="home-community-icon" aria-hidden="true">
+                        <i data-lucide="users" aria-hidden="true"></i>
+                    </div>
+                    <p>Pr&#233;sence de proximit&#233;</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <?php if ($donationCall): ?>
         <section>
             <div class="container">
