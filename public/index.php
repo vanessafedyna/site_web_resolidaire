@@ -224,6 +224,27 @@ require_once __DIR__ . '/../includes/nav.php';
         </div>
     </section>
 
+    <section class="home-contact-strip" aria-labelledby="home-contact-strip-title">
+        <div class="container">
+            <div class="home-contact-strip-inner">
+                <div class="home-contact-strip-content">
+                    <h2 class="home-contact-strip-title" id="home-contact-strip-title">Restez en contact</h2>
+                    <p class="home-contact-strip-text">Une question sur nos services, nos activit&#233;s ou le b&#233;n&#233;volat&nbsp;?</p>
+                </div>
+                <div class="home-contact-strip-actions">
+                    <a class="button" href="<?= e(public_url('contact.php')); ?>">
+                        <i data-lucide="message-circle" aria-hidden="true"></i>
+                        <span>Nous contacter</span>
+                    </a>
+                    <a class="home-contact-strip-phone" href="tel:5145989670">
+                        <i data-lucide="phone" aria-hidden="true"></i>
+                        <span>514-598-9670</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <?php if ($donationCall): ?>
         <section>
             <div class="container">

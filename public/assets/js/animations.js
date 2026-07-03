@@ -199,4 +199,23 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+
+    var contactStripSection = document.querySelector('.home-contact-strip');
+
+    animateOnEnter(contactStripSection, function () {
+        var contactTargets = compact([
+            contactStripSection.querySelector('.home-contact-strip-content'),
+            contactStripSection.querySelector('.home-contact-strip-actions')
+        ]);
+
+        if (contactTargets.length) {
+            gsap.from(contactTargets, {
+                opacity: 0,
+                y: 22,
+                duration: 0.7,
+                stagger: 0.12,
+                ease: 'power2.out'
+            });
+        }
+    });
 });
