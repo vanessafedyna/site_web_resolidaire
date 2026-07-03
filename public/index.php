@@ -2,7 +2,36 @@
 $page_title = 'Accueil';
 require_once __DIR__ . '/../includes/header.php';
 
-$featuredServices = Service::featured(4);
+$homeServiceCards = [
+    [
+        'label' => 'Repas à domicile',
+        'title' => 'Popote roulante',
+        'text' => 'Livraison de repas chauds à domicile pour soutenir l’autonomie et le maintien à domicile.',
+        'icon' => 'utensils',
+        'tone' => 'sun',
+    ],
+    [
+        'label' => 'Déplacements',
+        'title' => 'Accompagnement médical',
+        'text' => 'Accompagnement bénévole vers les rendez-vous médicaux, selon les disponibilités.',
+        'icon' => 'car',
+        'tone' => 'cream',
+    ],
+    [
+        'label' => 'Courses',
+        'title' => 'Transport vers l’épicerie',
+        'text' => 'Transport organisé vers certains points d’alimentation du quartier.',
+        'icon' => 'shopping-bag',
+        'tone' => 'soft',
+    ],
+    [
+        'label' => 'Soutien du milieu',
+        'title' => 'Intervention de milieu',
+        'text' => 'Écoute, orientation et présence de proximité dans le quartier.',
+        'icon' => 'heart-handshake',
+        'tone' => 'dark',
+    ],
+];
 $activities = Activity::upcoming(3);
 $partners = array_slice(Partner::all(true), 0, 4);
 $donationCall = DonationCall::activeOne();
@@ -61,41 +90,26 @@ require_once __DIR__ . '/../includes/nav.php';
 
     <section class="home-services home-services-section">
         <div class="container">
-            <h2>Services et soutien</h2>
-            <p class="section-intro">Des services de proximité pour soutenir l’autonomie, les déplacements, la vie sociale et l’accès aux ressources du quartier.</p>
+            <div class="home-services-heading">
+                <div class="home-services-heading-main">
+                    <h2 class="home-services-title">Services et soutien</h2>
+                    <span class="home-services-heading-accent" aria-hidden="true"></span>
+                    <p class="section-intro">Des services concrets pour soutenir l’autonomie, les déplacements, l’alimentation et le maintien du lien social.</p>
+                </div>
+            </div>
             <div class="cards-grid services-grid home-services-grid">
-                <?php foreach ($featuredServices as $service): ?>
-                    <?php
-                    $serviceTitle = (string) ($service['title'] ?? '');
-                    $serviceLabel = 'Service de proximité';
-                    $serviceTitleNormalized = function_exists('mb_strtolower')
-                        ? mb_strtolower($serviceTitle, 'UTF-8')
-                        : strtolower($serviceTitle);
-
-                    if (str_contains($serviceTitleNormalized, 'popote')) {
-                        $serviceLabel = 'Repas à domicile';
-                    } elseif (
-                        str_contains($serviceTitleNormalized, 'transport')
-                        && (str_contains($serviceTitleNormalized, 'medical') || str_contains($serviceTitleNormalized, 'médical'))
-                    ) {
-                        $serviceLabel = 'Déplacements';
-                    } elseif (str_contains($serviceTitleNormalized, 'epicerie') || str_contains($serviceTitleNormalized, 'épicerie')) {
-                        $serviceLabel = 'Courses';
-                    } elseif (str_contains($serviceTitleNormalized, 'intervention')) {
-                        $serviceLabel = 'Soutien du milieu';
-                    }
-                    ?>
-                    <article class="card service-card">
-                        <div class="card-media<?= empty($service['image']) ? ' is-placeholder' : ''; ?>">
-                            <?php if (!empty($service['image'])): ?>
-                                <img src="<?= e(upload_url($service['image'])); ?>" alt="<?= e($service['title']); ?>">
-                            <?php endif; ?>
-                        </div>
-                        <div class="card-body">
-                            <p class="service-label"><?= e($serviceLabel); ?></p>
-                            <h3><?= e($service['title']); ?></h3>
-                            <p><?= e($service['short_description']); ?></p>
-                            <a class="service-card-link" href="<?= e(public_url('services.php')); ?>">En savoir plus &rarr;</a>
+                <?php foreach ($homeServiceCards as $card): ?>
+                    <article class="card service-card home-service-card home-service-card--<?= e($card['tone']); ?>">
+                        <div class="home-service-card-body">
+                            <div class="home-service-icon" aria-hidden="true">
+                                <i data-lucide="<?= e($card['icon']); ?>" aria-hidden="true"></i>
+                            </div>
+                            <p class="service-label home-service-label"><?= e($card['label']); ?></p>
+                            <h3><?= e($card['title']); ?></h3>
+                            <p><?= e($card['text']); ?></p>
+                            <a class="service-card-link home-service-link" href="<?= e(public_url('services.php')); ?>" aria-label="En savoir plus sur <?= e($card['title']); ?>">
+                                En savoir plus <span aria-hidden="true">&rarr;</span>
+                            </a>
                         </div>
                     </article>
                 <?php endforeach; ?>
