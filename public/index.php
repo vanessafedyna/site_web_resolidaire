@@ -39,6 +39,48 @@ $donationCallUrl = normalize_donation_url($donationCall['button_url'] ?? SiteSet
 $homeActivitiesMonthLabel = 'À venir';
 $homeActivitiesYearLabel = date('Y');
 
+$homePartnersHasRealData = !empty($partners);
+$homePartnerIcons = ['building-2', 'heart-pulse', 'users', 'map-pin'];
+$homePartnerCards = [];
+
+if ($homePartnersHasRealData) {
+    foreach ($partners as $index => $partner) {
+        $homePartnerCards[] = [
+            'title' => (string) ($partner['name'] ?? 'Partenaire local'),
+            'text' => trim((string) ($partner['description'] ?? '')) ?: 'Collaboration locale pour renforcer le soutien offert dans le quartier.',
+            'icon' => $homePartnerIcons[$index % count($homePartnerIcons)],
+            'url' => !empty($partner['website_url']) ? (string) $partner['website_url'] : '',
+        ];
+    }
+} else {
+    $homePartnerCards = [
+        [
+            'title' => 'Organismes communautaires',
+            'text' => 'Collaboration avec les ressources locales du quartier.',
+            'icon' => 'building-2',
+            'url' => '',
+        ],
+        [
+            'title' => 'Services de sante et de proximite',
+            'text' => 'References, accompagnement et soutien aux personnes selon les besoins.',
+            'icon' => 'heart-pulse',
+            'url' => '',
+        ],
+        [
+            'title' => 'Benevoles et citoyens engages',
+            'text' => 'Une implication humaine essentielle a la vie de l organisme.',
+            'icon' => 'users',
+            'url' => '',
+        ],
+        [
+            'title' => 'Milieu local',
+            'text' => 'Des liens avec les acteurs du quartier pour mieux repondre aux besoins.',
+            'icon' => 'map-pin',
+            'url' => '',
+        ],
+    ];
+}
+
 if (!empty($activities[0]['activity_date'])) {
     $firstActivityTimestamp = strtotime((string) $activities[0]['activity_date']);
 
@@ -306,18 +348,34 @@ require_once __DIR__ . '/../includes/nav.php';
         </section>
     <?php endif; ?>
 
-    <section>
+    <section class="home-partners-section" aria-labelledby="home-partners-title">
         <div class="container">
-            <h2>Partenaires du milieu</h2>
-            <div class="cards-grid">
-                <?php foreach ($partners as $partner): ?>
-                    <article class="card">
-                        <div class="card-body">
-                            <h3><?= e($partner['name']); ?></h3>
-                            <p><?= e($partner['description']); ?></p>
-                        </div>
-                    </article>
-                <?php endforeach; ?>
+            <div class="home-partners-inner">
+                <div class="home-partners-heading">
+                    <h2 class="home-partners-title" id="home-partners-title">Partenaires du milieu</h2>
+                    <p class="home-partners-text">R&#233;solidaire collabore avec des partenaires locaux afin de renforcer le soutien offert aux personnes a&#238;n&#233;es, aux proches aidants et aux familles du quartier.</p>
+                </div>
+                <div class="home-partners-grid">
+                    <?php foreach ($homePartnerCards as $partnerCard): ?>
+                        <article class="home-partner-card">
+                            <div class="home-partner-icon" aria-hidden="true">
+                                <i data-lucide="<?= e($partnerCard['icon']); ?>" aria-hidden="true"></i>
+                            </div>
+                            <div class="home-partner-copy">
+                                <h3 class="home-partner-title"><?= e($partnerCard['title']); ?></h3>
+                                <p class="home-partner-text"><?= e($partnerCard['text']); ?></p>
+                            </div>
+                            <?php if (!empty($partnerCard['url'])): ?>
+                                <a class="home-partner-link" href="<?= e($partnerCard['url']); ?>" target="_blank" rel="noopener">
+                                    Visiter le site <span aria-hidden="true">&rarr;</span>
+                                </a>
+                            <?php endif; ?>
+                        </article>
+                    <?php endforeach; ?>
+                </div>
+                <div class="home-partners-actions">
+                    <a class="button button-secondary" href="<?= e(public_url('partenaires.php')); ?>">Voir tous les partenaires</a>
+                </div>
             </div>
         </div>
     </section>

@@ -249,4 +249,36 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+
+    var partnersSection = document.querySelector('.home-partners-section');
+
+    animateOnEnter(partnersSection, function () {
+        var partnersHeadingTargets = compact([
+            partnersSection.querySelector('.home-partners-title'),
+            partnersSection.querySelector('.home-partners-text'),
+            partnersSection.querySelector('.home-partners-actions')
+        ]);
+        var partnerCards = toArray('.home-partner-card', partnersSection);
+
+        if (partnersHeadingTargets.length) {
+            gsap.from(partnersHeadingTargets, {
+                opacity: 0,
+                y: 22,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: 'power2.out'
+            });
+        }
+
+        if (partnerCards.length) {
+            gsap.from(partnerCards, {
+                opacity: 0,
+                y: 22,
+                duration: 0.72,
+                stagger: 0.1,
+                ease: 'power2.out',
+                delay: 0.08
+            });
+        }
+    });
 });

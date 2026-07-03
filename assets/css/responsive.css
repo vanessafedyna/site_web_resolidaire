@@ -184,6 +184,14 @@
     .home-engagement-card {
         min-height: 18rem;
     }
+
+    .home-partners-heading {
+        max-width: none;
+    }
+
+    .home-partners-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 @media (max-width: 640px) {
@@ -288,5 +296,23 @@
 
     .home-engagement-card p {
         max-width: none;
+    }
+
+    .home-partners-section {
+        padding: 3.75rem 0;
+    }
+
+    .home-partners-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .home-partner-card {
+        min-height: auto;
+        padding: 1.35rem;
+    }
+
+    .home-partners-actions .button {
+        width: 100%;
     }
 }
