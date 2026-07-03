@@ -163,4 +163,40 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     });
+
+    var communitySection = document.querySelector('.home-community-section');
+
+    animateOnEnter(communitySection, function () {
+        var communityTextTargets = compact([
+            communitySection.querySelector('.home-community-title'),
+            communitySection.querySelector('.home-community-text'),
+            communitySection.querySelector('.home-community-actions')
+        ]);
+        var communityVisualTargets = compact([
+            communitySection.querySelector('.home-community-media'),
+            communitySection.querySelector('.home-community-card')
+        ]);
+
+        if (communityTextTargets.length) {
+            gsap.from(communityTextTargets, {
+                opacity: 0,
+                y: 22,
+                duration: 0.72,
+                stagger: 0.1,
+                ease: 'power2.out'
+            });
+        }
+
+        if (communityVisualTargets.length) {
+            gsap.from(communityVisualTargets, {
+                opacity: 0,
+                y: 24,
+                x: 10,
+                duration: 0.76,
+                stagger: 0.12,
+                ease: 'power2.out',
+                delay: 0.08
+            });
+        }
+    });
 });
