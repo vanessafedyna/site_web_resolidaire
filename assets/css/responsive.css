@@ -9,7 +9,7 @@
         grid-template-columns: 1fr;
     }
 
-    .menu-toggle {
+    .js .menu-toggle {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -21,12 +21,12 @@
         color: #111111;
     }
 
-    .main-nav {
+    .js .main-nav {
         display: none;
         width: 100%;
     }
 
-    .main-nav.is-open {
+    .js .main-nav.is-open {
         display: block;
     }
 

@@ -8,12 +8,13 @@ $siteSettings = SiteSetting::all();
 $pageTitle = $page_title ?? 'Resolidaire';
 ?>
 <!DOCTYPE html>
-<html lang="fr-CA">
+<html lang="fr-CA" class="no-js">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= e($pageTitle); ?> | R&#233;solidaire</title>
     <meta name="description" content="R&#233;solidaire accompagne les a&#238;n&#233;s, les proches aidants et la communaut&#233; avec des services humains et accessibles.">
+    <script>document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, 'js');</script>
     <link rel="stylesheet" href="<?= e(asset_url('css/reset.css')); ?>">
     <link rel="stylesheet" href="<?= e(asset_url('vendor/aos/aos.css')); ?>">
     <link rel="stylesheet" href="<?= e(asset_url('css/style.css')); ?>">
