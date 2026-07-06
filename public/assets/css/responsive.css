@@ -3,6 +3,7 @@
     .split-grid,
     .home-community-inner,
     .footer-grid,
+    .site-footer-main,
     .cards-grid,
     .stats-grid,
     .admin-layout {
@@ -192,6 +193,15 @@
     .home-partners-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+
+    .site-footer-columns {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.9rem 1rem;
+    }
+
+    .site-footer-column:last-child {
+        grid-column: 1 / -1;
+    }
 }
 
 @media (max-width: 640px) {
@@ -314,5 +324,45 @@
 
     .home-partners-actions .button {
         width: 100%;
+    }
+
+    .site-footer {
+        padding-top: 2.6rem;
+    }
+
+    .site-footer-brand {
+        max-width: none;
+        padding-right: 0;
+    }
+
+    .site-footer-main,
+    .site-footer-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .site-footer-socials {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+    }
+
+    .site-footer-social-link {
+        width: auto;
+    }
+
+    .site-footer-logo {
+        padding: 0.3rem 0.45rem;
+    }
+
+    .site-footer-logo-image {
+        width: min(100%, 9.75rem);
+        max-height: 2.7rem;
+    }
+
+    .site-footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
     }
 }
