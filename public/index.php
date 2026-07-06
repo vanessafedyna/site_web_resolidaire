@@ -108,24 +108,44 @@ require_once __DIR__ . '/../includes/nav.php';
 ?>
 <main id="main-content">
     <section class="hero">
-        <div class="container hero-grid">
-            <div class="hero-copy">
-                <span class="eyebrow">Pour les aîné·e·s, les proches aidants et les familles du quartier</span>
-                <h1>Du soutien concret pour mieux vivre dans le quartier.</h1>
-                <p>Résolidaire accompagne les personnes du milieu avec des services de proximité, des activités accessibles et une présence humaine enracinée dans Hochelaga-Maisonneuve.</p>
-                <div class="hero-actions">
-                    <a class="button" href="<?= e(public_url('contact.php')); ?>">Obtenir de l’aide</a>
-                    <a class="button button-secondary" href="<?= e(public_url('activites.php')); ?>">Voir les activités</a>
+        <div class="hero-stage">
+            <div class="container hero-layout">
+                <div class="hero-copy">
+                    <span class="hero-accent-line" aria-hidden="true"></span>
+                    <span class="eyebrow">Pour les aîné·e·s, les proches aidants et les familles du quartier</span>
+                    <h1>
+                        <span class="hero-title-line">Du soutien concret</span>
+                        <span class="hero-title-line">pour mieux vivre</span>
+                        <span class="hero-title-line">dans le quartier.</span>
+                    </h1>
+                    <p>Résolidaire accompagne les personnes du milieu avec des services de proximité, des activités accessibles et une présence humaine enracinée dans Hochelaga-Maisonneuve.</p>
+                    <div class="hero-actions">
+                        <a class="button" href="<?= e(public_url('services.php')); ?>">Obtenir de l’aide</a>
+                        <a class="button button-secondary" href="<?= e(public_url('activites.php')); ?>">Voir les activités</a>
+                    </div>
+                    <a class="hero-secondary-link" href="<?= e(public_url('benevolat.php')); ?>">Devenir bénévole</a>
                 </div>
-                <a class="hero-secondary-link" href="<?= e(public_url('benevolat.php')); ?>">Devenir bénévole</a>
-                <ul class="hero-reassurance" aria-label="Points clés">
-                    <li>Services de proximité</li>
-                    <li>Activités accessibles</li>
-                    <li>Accompagnement humain</li>
-                </ul>
             </div>
-            <div class="hero-card hero-media">
-                <img src="<?= e(asset_url('images/hero/home-hero-photo.png')); ?>" alt="Membre de l'equipe Resolidaire en echange avec des aines lors d'une activite communautaire.">
+            <div class="container hero-media">
+                <img src="<?= e(asset_url('images/hero/resolidaire-hero-editorial.png')); ?>" alt="Personnes aînées réunies avec des intervenantes dans un espace communautaire">
+            </div>
+            <div class="hero-reassurance-wrap">
+                <div class="container">
+                    <ul class="hero-reassurance" aria-label="Points clés">
+                        <li>
+                            <i data-lucide="map-pinned" aria-hidden="true"></i>
+                            <span>Services de proximité</span>
+                        </li>
+                        <li>
+                            <i data-lucide="calendar-heart" aria-hidden="true"></i>
+                            <span>Activités accessibles</span>
+                        </li>
+                        <li>
+                            <i data-lucide="hand-heart" aria-hidden="true"></i>
+                            <span>Accompagnement humain</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>

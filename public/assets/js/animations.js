@@ -44,39 +44,57 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
+        var heroTitleLines = toArray('.hero-title-line', heroSection);
         var heroIntroTargets = compact([
             heroSection.querySelector('.eyebrow'),
-            heroSection.querySelector('h1'),
             heroSection.querySelector('.hero-copy > p'),
             heroSection.querySelector('.hero-actions'),
             heroSection.querySelector('.hero-secondary-link')
         ]);
         var heroReassuranceItems = toArray('.hero-reassurance li', heroSection);
+        var heroStage = heroSection.querySelector('.hero-stage');
         var heroMedia = heroSection.querySelector('.hero-media');
+
+        if (heroStage) {
+            heroTimeline.from(heroStage, {
+                opacity: 0,
+                y: 18,
+                duration: 0.56
+            });
+        }
 
         if (heroIntroTargets.length) {
             heroTimeline.from(heroIntroTargets, {
                 opacity: 0,
                 y: 24,
                 stagger: 0.1
-            });
+            }, '-=0.24');
+        }
+
+        if (heroTitleLines.length) {
+            heroTimeline.from(heroTitleLines, {
+                opacity: 0,
+                y: 26,
+                duration: 0.66,
+                stagger: 0.08
+            }, 0.08);
         }
 
         if (heroReassuranceItems.length) {
             heroTimeline.from(heroReassuranceItems, {
                 opacity: 0,
-                y: 18,
-                duration: 0.55,
-                stagger: 0.08
-            }, '-=0.28');
+                y: 14,
+                duration: 0.45,
+                stagger: 0.06
+            }, '-=0.2');
         }
 
         if (heroMedia) {
             heroTimeline.from(heroMedia, {
                 opacity: 0,
-                y: 28,
-                duration: 0.82
-            }, '-=0.42');
+                y: 20,
+                duration: 0.62
+            }, '-=0.14');
         }
     }
 
