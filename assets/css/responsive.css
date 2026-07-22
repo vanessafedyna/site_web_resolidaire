@@ -1,14 +1,4 @@
-@media (max-width: 980px) {
-    .split-grid,
-    .home-community-inner,
-    .footer-grid,
-    .site-footer-main,
-    .cards-grid,
-    .stats-grid,
-    .admin-layout {
-        grid-template-columns: 1fr;
-    }
-
+@media (max-width: 1140px) {
     .js .menu-toggle {
         display: inline-flex;
         align-items: center;
@@ -63,6 +53,18 @@
         flex-direction: column;
         align-items: stretch;
         padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 980px) {
+    .split-grid,
+    .home-community-inner,
+    .footer-grid,
+    .site-footer-main,
+    .cards-grid,
+    .stats-grid,
+    .admin-layout {
+        grid-template-columns: 1fr;
     }
 
     .hero {
